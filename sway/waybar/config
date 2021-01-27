@@ -1,0 +1,51 @@
+{
+    "position": "bottom", 
+    "height": 50,
+    "modules-left": ["sway/workspaces"],
+    "modules-right": ["pulseaudio", "network", "clock#2date", "clock"], 
+    // Modules configuration
+	"sway/workspaces": {
+           "disable-scroll": true,
+           "all-outputs": true,
+           "format": "{icon}",
+           "format-icons": {
+    //         "1": "",
+    //         "2": "",
+    //         "3": "",
+    //         "4": "",
+    //         "5": "",
+               "urgent": "",
+               "focused": "",
+               "default": ""
+         }
+    },
+	"clock#2date": {
+    		"format": "{:%Y-%m-%d-%a}"
+	},
+	"clock": {
+		"format": "{:%H:%M}",
+        	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+      //  	"format-alt": "{:%Y-%m-%d}"
+	},
+		"network": {
+        	"format-wifi": "  ({signalStrength}%)",
+        	"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        	"format-linked": "{ifname} (No IP) ",
+        	"format-disconnected": " Disconnected",
+        	"format-alt": "{ifname}: {ipaddr}/{cidr}"
+	},
+	"pulseaudio": {
+		"format": "{icon}  {volume}%",
+        	"format-muted": "󰖁 Muted",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+    }
+}
