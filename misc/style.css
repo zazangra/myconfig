@@ -1,0 +1,88 @@
+/**{
+        text-align: justify;
+}*/
+body{
+
+        background-image: url('back.jpg');
+        background-size:cover;
+}
+h1{
+        color: #81a1c1;
+        font-family: Fira Code;
+        text-align: center;
+}
+h3{
+        color: #88c0d0 ;
+        font-family: Fira Code;
+        text-align: center;
+}
+/*#ittit{
+        padding: 10px; 
+        font-family: Fira Code;
+        font-size: large;
+}*/
+
+li, a:link, a:visited{
+        display: list-item;
+        list-style-type: none;
+        font-family: Fira Code;
+        color: #88c0d0;
+        text-decoration-line: none;
+}
+#title{
+        background-color: #2e3440;
+        width: 500px;
+        height: 100px;
+        border: 1px solid #2e3440;
+        border-radius: 25px;
+        margin-left: 650px;
+        margin-top: 30px;
+        padding: 10px 25px 25px;
+}
+
+#studyBox{
+        background-color: #2e3440;
+        width: 200px;
+        height: 275px;
+        border: 1px solid #2e3440;
+        padding: 15px 50px 10px;
+        border-radius: 25px;
+        display: inline-table;
+        margin-top: 30px;
+        margin-left: 400px;
+      /*  margin: 20px;*/
+}
+
+#geekBox{
+        background-color: #2e3440;
+        width: 200px;
+        height: 275px;
+        border: 1px solid #2e3440;
+        padding: 15px 50px 10px;
+     /*   padding: 50px;*/
+        border-radius: 25px;
+        display: inline-table;
+        margin-top: 30px;
+}
+
+#socialBox{
+        background-color: #2e3440;
+        width: 200px;
+        height: 275px;
+        border: 1px solid #2e3440;
+        padding: 15px 50px 10px;
+        border-radius: 25px;
+        display: inline-table;
+        margin-top: 30px;
+}
+
+#musicBox{
+        background-color: #2e3440;
+        width: 200px;
+        height: 275px;
+        border: 1px solid #2e3440;
+        padding: 15px 50px 10px;
+        border-radius: 25px;
+        display: inline-table;
+        margin-top: 30px;
+}
