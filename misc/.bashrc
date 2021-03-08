@@ -27,7 +27,7 @@ alias c='cd && clear && n'
 alias mirror.sh='~/bin/mirror.sh'
 alias icat='kitty +kitten icat'
 alias p='pwd'
-alias gitp='cat ~/Documents/IDs/tokengithub'
+alias gitp='wl-copy -n < ~/pathtotoken'
 function _update_ps1() {
     PS1=$(powerline-shell $?)
 }
