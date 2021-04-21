@@ -8,12 +8,12 @@ body{
 }
 h1{
         color: #81a1c1;
-        font-family: Fira Code;
+        font-family: Didot;
         text-align: center;
 }
 h3{
         color: #88c0d0 ;
-        font-family: Fira Code;
+        font-family: Didot;
         text-align: center;
 }
 /*#ittit{
@@ -25,9 +25,10 @@ h3{
 li, a:link, a:visited{
         display: list-item;
         list-style-type: none;
-        font-family: Fira Code;
+        font-family: Didot;
         color: #88c0d0;
         text-decoration-line: none;
+        padding: 5 px;
 }
 #title{
         background-color: #2e3440;
@@ -39,6 +40,12 @@ li, a:link, a:visited{
         margin-top: 30px;
         padding: 10px 25px 25px;
 }
+
+#title:hover {
+        width: 510px;
+        height: 110px;
+}
+
 
 #studyBox{
         background-color: #2e3440;
@@ -53,6 +60,11 @@ li, a:link, a:visited{
       /*  margin: 20px;*/
 }
 
+#studyBox:hover {
+        width: 205px;
+        height: 280px;
+}
+
 #geekBox{
         background-color: #2e3440;
         width: 200px;
@@ -63,6 +75,11 @@ li, a:link, a:visited{
         border-radius: 25px;
         display: inline-table;
         margin-top: 30px;
+}
+
+#geekBox:hover {
+        width: 205px;
+        height: 280px;
 }
 
 #socialBox{
@@ -76,6 +93,11 @@ li, a:link, a:visited{
         margin-top: 30px;
 }
 
+#socialBox:hover {
+        width: 205px;
+        height: 280px;
+}
+
 #musicBox{
         background-color: #2e3440;
         width: 200px;
@@ -85,4 +107,9 @@ li, a:link, a:visited{
         border-radius: 25px;
         display: inline-table;
         margin-top: 30px;
+}
+
+#musicBox:hover{
+        width: 205px;
+        height: 280px;
 }
