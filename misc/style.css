@@ -8,12 +8,12 @@ body{
 }
 h1{
         color: #81a1c1;
-        font-family: Didot;
+        font-family: Lucida;
         text-align: center;
 }
 h3{
         color: #88c0d0 ;
-        font-family: Didot;
+        font-family: Lucida;
         text-align: center;
 }
 /*#ittit{
@@ -25,7 +25,7 @@ h3{
 li, a:link, a:visited{
         display: list-item;
         list-style-type: none;
-        font-family: Didot;
+        font-family: Lucida;
         color: #88c0d0;
         text-decoration-line: none;
         padding: 5 px;
