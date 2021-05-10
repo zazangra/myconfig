@@ -28,7 +28,8 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
 #
 # Example configuration:
 #
-   output  'Unknown ASUS VA24E KBLMTF046312' resolution 1920x1080 position 1920,0
+   output  'HDMI-A-1' resolution 1920x1080@74Hz position 1920,0 
+   #output  'Unknown ASUS VA24E KBLMTF046312' resolution 1920x1080 position 1920,0 
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
@@ -71,7 +72,7 @@ input  * {
     bindsym $mod+Return exec $term
 
     # Start firefox
-    bindsym $mod+b exec firefox-nightly 
+    bindsym $mod+b exec firefox
 
     # Start mail
     bindsym $mod+m exec thunderbird
@@ -88,6 +89,12 @@ input  * {
 
     # Start your launcher
     bindsym $mod+d exec ulauncher 
+
+    #Start nautilus
+    bindsym $mod+n exec nautilus  
+
+    # Toggle trasparency
+    bindsym $mod+t exec toggletrasp.sh
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -238,23 +245,27 @@ include /etc/sway/config.d/*
 
 
 #gaps 
-gaps inner 10
-gaps outer 1
+gaps inner 5
+gaps outer 5
 #radius 
 
 #no borders, no nation
+# class                 border  backgr. text    indicator child_border
+
 default_border none
 default_floating_border none
 
 #sway bar & trasparecy
+# exec . ~/.bash_profile
+exec waybar --config ~/.config/waybar/config
 exec  swaybg -i $(find /home/alessandro/wallpaper/.  -type f | shuf -n1) -m fill &
 exec ~/bin/trasparency.py
-exec waybar --config ~/.config/waybar/config
 
 #cursor
-seat seat0 xcursor_theme oxy-neon 48
+seat seat0 xcursor_theme Fluent-dark-cursors 
 
 #firefox fa cose
 for_window [title="Firefox — Sharing Indicator"] kill
+for_window [app_id="Firefox"] floating enable
 #see what happen
 #xwayland dysable
