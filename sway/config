@@ -79,6 +79,9 @@ input  * {
 
     #Start spegni
     bindsym $mod+Shift+p exec ~/bin/spegni.sh
+
+    #Strat authy
+    bindsym $mod+Shift+a exec authy
     
     
     #Start filmanager
