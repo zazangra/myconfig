@@ -1,6 +1,6 @@
 set number
 syntax on
-set background=light
+set background=dark
 set tabstop=4
 set softtabstop=4
 set cursorline
@@ -12,7 +12,7 @@ set nowritebackup
 set expandtab
 set noerrorbells
 set noswapfile
-set backspace=indent,eol,start
+set backspace=start,indent,eol
 set incsearch
 set scrolloff=8
 set nowrap
@@ -24,15 +24,16 @@ set updatetime=300
 set shortmess+=c
 set signcolumn=number
 
+"set spell spelllang=en_us
 map! jj <Esc>
 filetype plugin on
-"set spell spelllang=en_us
 set nocompatible              " required
 filetype off     
 call plug#begin('~/.vim/plugged')
 
 "    Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'machakann/vim-sandwich'
@@ -57,8 +58,10 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 Plug 'ryanoasis/vim-devicons'
+"blankline likely to cause problems with autosaves
 Plug 'lukas-reineke/indent-blankline.nvim'
-
+"go-to for go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
@@ -75,19 +78,31 @@ colorscheme nord
 ""inoremap {<CR> {<CR>}<ESC>O
 ""inoremap {;<CR> {<CR>};<ESC>O
 
+""Emmet"
+autocmd FileType html,css,javascript,jsx EmmetInstall
+let g:user_emmet_install_global = 0
+"react with js
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\}
+
 "NERDTree
 " Start NERDTree. If a file is specified, move the cursor to its window.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+"locate current file in NERDTree
+map <leader>m :NERDTreeFind<cr>
 
 """COC     
-" Use <c-space> to trigger completion.
+" Use <c-x> to trigger completion.
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+  inoremap <silent><expr> <c-x> coc#refresh()
 endif
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+" Make <c-c> auto-select the first completion item and notify coc.nvim to
+" format on enter
+inoremap <silent><expr> <c-c> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " 
 " GoTo code navigation.
@@ -156,6 +171,7 @@ endif
 noremap <leader>q :q<cr>
 nnoremap <leader>s :w<cr>
 imap <leader>s <ESC>:w<cr>a
+nmap <leader>t :tabnew<CR>
 nmap <silent> <leader>k :wincmd k<CR>
 nmap <silent> <leader>j :wincmd j<CR>
 nmap <silent> <leader>h :wincmd h<CR>
@@ -169,79 +185,8 @@ nnoremap <leader>gs <cmd>Telescope grep_string<cr>
 nnoremap <leader>w <cmd>Telescope current_buffer_fuzzy_find<cr>
 
 
-"lua
-lua << EOF
-local actions = require('telescope.actions')
-require('telescope').setup {
-        defaults = {
-                prompt_prefix = ' > ',
-                color_devicons = true,
-                file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
-                grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
-                qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
-                path_display = {
-                        'shorten',
-                        'absolute',
-                        },
-                mappings = {
-                        i = {
-                                ["<Esc>"] = actions.close,
-                                },
-                        },
-                layout_config = {
-                        preview_cutoff = 10,
-                        preview_width = 50,
-                        },
-                },
-        }
-require'nvim-treesitter.configs'.setup {
-        incremental_selection = {
-        enable = false,
-        keymaps = {
-                init_selection = "gnn",
-                node_incremental = "grn",
-                scope_incremental = "grc",
-                node_decremental = "grm",
-                },
-        },
-indent = {
-enable = false
-},
-        highlight = {
-        enable = true,
-        },
-}
+lua require('plugin-config')
+"lua require('options')
 
-
-require'lualine'.setup {
-        options = {
-                icons_enabled = true,
-                theme = 'nord',
-                component_separators = {'', ''},
-                section_separators = {'', ''},
-                disabled_filetypes = {}
-                },
-        sections = {
-                lualine_a = {'mode'},
-                lualine_b = {'branch'},
-                lualine_c = {'filename'},
-                lualine_x = {'encoding', 'fileformat', 'filetype'},
-                lualine_y = {'progress'},
-                lualine_z = {'location'}
-                },
-        inactive_sections = {
-                lualine_a = {},
-                lualine_b = {},
-                lualine_c = {'filename'},
-                lualine_x = {'location'},
-                lualine_y = {},
-                lualine_z = {}
-                },
-        tabline = {},
-        extensions = {}
-        }
-
-
-EOF
 
 nnoremap <silent> <leader>p :Format<CR>
